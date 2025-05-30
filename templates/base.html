@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 shadow p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{% url 'dashboard' %}" class="text-white text-2xl font-bold">EventSys</a>
+            <ul class="flex space-x-6">
+                
+                <li><a href="{% url 'participants-list' %}" class="hover:text-purple-400 transition">Participants</a></li>
+                <li><a href="" class="hover:text-purple-400 transition">Events</a></li>
+                <li><a href="" class="hover:text-purple-400 transition">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="flex-1 container mx-auto p-6">
+        {% block content %}
+        <!-- Child templates inject content here -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-4 text-center text-gray-400">
+        © {{ now|date:"Y" }} Event Management System. All rights reserved.
+    </footer>
+
+</body>
+</html>

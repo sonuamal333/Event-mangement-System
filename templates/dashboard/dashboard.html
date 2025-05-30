@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white px-6 py-10">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl font-bold mb-6">Event Management System</h1>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+            <div class="bg-gray-800 p-6 rounded-lg shadow">
+                <p class="text-gray-400">Total Events</p>
+                <p class="text-3xl font-bold">{{ total_events }}</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow">
+                <p class="text-gray-400">Total Participants</p>
+                <p class="text-3xl font-bold">{{ total_participants }}</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow">
+                <p class="text-gray-400">Active Events</p>
+                <p class="text-3xl font-bold">{{ active_events }}</p>
+            </div>
+        </div>
+
+        <!-- Recent Events -->
+        <div class="bg-gray-800 p-6 rounded-lg shadow">
+            <h2 class="text-2xl font-semibold mb-4">Recent Events</h2>
+            <table class="w-full text-left">
+                <thead class="bg-gray-700 text-gray-300">
+                    <tr>
+                        <th class="px-4 py-2">Name</th>
+                        <th class="px-4 py-2">Date</th>
+                        <th class="px-4 py-2">Location</th>
+                        <th class="px-4 py-2">Participants</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in recent_events %}
+                    <tr class="border-t border-gray-600 hover:bg-gray-700">
+                        <td class="px-4 py-2">{{ event.name }}</td>
+                        <td class="px-4 py-2">{{ event.date }}</td>
+                        <td class="px-4 py-2">{{ event.location }}</td>
+                        <td class="px-4 py-2">{{ event.participant_set.count }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="px-4 py-2 text-gray-400">No events found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
