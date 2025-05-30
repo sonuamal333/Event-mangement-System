@@ -89,11 +89,3 @@ class ParticipantDeleteView(View):
         return redirect('participants-list')
     
 
-
-
-    git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/sonuamal333/Event-mangement-System.git
-git push -u origin main
